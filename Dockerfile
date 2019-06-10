@@ -32,8 +32,6 @@ RUN apt-get install -y x11vnc
 RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd chimpatee ~/.vnc/passwd
 
-WORKDIR /opt/chimp
-
 RUN apt-get -y install g++ build-essential
 
 RUN npm -g config set user root
