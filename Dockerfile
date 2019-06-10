@@ -1,4 +1,4 @@
-FROM jenkins/slave:3.29-2
+FROM jenkins/jnlp-slave:3.29-1
 USER root
 ENV NPM_CONFIG_PREFIX=$HOME/.npm-global \
     PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH \
@@ -36,6 +36,9 @@ RUN apt-get -y install g++ build-essential
 
 RUN npm -g config set user root
 RUN npm install -g chimpy --unsafe-perm
-USER jenkins
-COPY jenkins-slave /usr/local/bin/jenkins-slave
-ENTRYPOINT ["jenkins-slave"]
+
+USER ${user}
+ENV AGENT_WORKDIR=${AGENT_WORKDIR}
+
+USER ${user}
+WORKDIR /home/${user}
