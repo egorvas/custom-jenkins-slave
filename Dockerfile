@@ -38,5 +38,6 @@ RUN apt-get -y install g++ build-essential
 
 RUN npm -g config set user root
 RUN npm install -g chimpy --unsafe-perm
+USER jenkins
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 ENTRYPOINT ["jenkins-slave"]
