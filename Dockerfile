@@ -36,9 +36,9 @@ RUN apt-get -y install g++ build-essential
 
 RUN npm -g config set user root
 RUN npm install -g chimpy --unsafe-perm
+RUN npm install -g mocha-multi-reporters --unsafe-perm
 
 USER ${user}
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
 
-USER ${user}
 WORKDIR /home/${user}
