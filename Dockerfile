@@ -47,6 +47,7 @@ RUN npm -g config set user root
 RUN npm install -g chimpy --unsafe-perm
 RUN npm install -g mocha-multi-reporters --unsafe-perm
 RUN npm config set unsafe-perm=true
+RUN chown -R jenkins:jenkins /home/jenkins/.npm
 
 USER ${user}
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
