@@ -28,6 +28,7 @@ RUN apt-get install -y git-core
 RUN apt-get install -y xvfb
 
 RUN apt-get install -y jq
+RUN apt-get install -y mongodb
 
 # X11VNC
 RUN apt-get install -y x11vnc
@@ -35,13 +36,6 @@ RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd chimpatee ~/.vnc/passwd
 
 RUN apt-get -y install g++ build-essential
-
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
-    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
-    apt-get update && \
-    apt-get install -Vy \
-    mongodb-org-tools=4.0.1 && \
-    rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 RUN npm -g config set user root
 RUN npm install -g chimpy --unsafe-perm
