@@ -38,10 +38,10 @@ RUN x11vnc -storepasswd chimpatee ~/.vnc/passwd
 RUN apt-get -y install g++ build-essential
 
 RUN npm -g config set user root
-RUN npm install -g chimpy --unsafe-perm
+RUN npm install -g chimpy@0.54.0 --unsafe-perm
 RUN npm install -g mocha-multi-reporters --unsafe-perm
 RUN npm config set unsafe-perm=true
-RUN npm install -g --save-dev --unsafe-perm @babel/preset-env
+
 RUN chown -R jenkins:jenkins /home/jenkins/.npm
 RUN chown -R jenkins:jenkins /home/jenkins/.meteor
 USER ${user}
