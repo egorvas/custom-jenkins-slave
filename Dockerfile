@@ -29,6 +29,7 @@ RUN apt-get install -y xvfb
 RUN apt-get install -y zip unzip
 RUN apt-get install -y jq
 RUN apt-get install -y mongodb
+RUN apt-get install gradle
 
 # X11VNC
 RUN apt-get install -y x11vnc
