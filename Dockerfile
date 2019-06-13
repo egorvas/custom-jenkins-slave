@@ -26,7 +26,7 @@ RUN apt-get install -y git-core
 
 # Dependency: xvfb (fake screen)
 RUN apt-get install -y xvfb
-
+RUN apt-get install -y zip unzip
 RUN apt-get install -y jq
 RUN apt-get install -y mongodb
 
