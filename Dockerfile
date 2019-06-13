@@ -39,7 +39,7 @@ RUN apt-get -y install g++ build-essential
 
 RUN npm -g config set user root
 RUN npm install -g chimpy@0.54.0 --unsafe-perm
-npm install -g mocha-allure-reporter --unsafe-perm
+RUN npm install -g mocha-allure-reporter --unsafe-perm
 RUN npm install -g mocha-multi-reporters --unsafe-perm
 RUN npm config set unsafe-perm=true
 
