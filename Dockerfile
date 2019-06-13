@@ -49,4 +49,24 @@ RUN chown -R jenkins:jenkins /home/jenkins/.meteor
 USER ${user}
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
 
+ENV ANDROID_HOME /home/jenkins/sdk
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+
+# For running 32 bit Android tools
+RUN dpkg --add-architecture i386 && \
+    apt-get update -y && \
+    apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get autoremove -y && \
+    apt-get clean
+
+RUN mkdir -p $ANDROID_HOME
+
+# Android SDK Tools 26.1.1
+RUN wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O /opt/tools.zip \
+	&& unzip /opt/tools.zip -d $ANDROID_HOME \
+	&& rm -f /opt/tools.zip
+
+RUN yes | sdkmanager 'build-tools;27.0.3' 'extras;google;m2repository' 'platform-tools' 'platforms;android-27' 'tools'
+
 WORKDIR /home/${user}
