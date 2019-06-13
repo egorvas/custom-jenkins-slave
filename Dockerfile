@@ -47,7 +47,6 @@ RUN npm config set unsafe-perm=true
 
 RUN chown -R jenkins:jenkins /home/jenkins/.npm
 RUN chown -R jenkins:jenkins /home/jenkins/.meteor
-USER ${user}
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
 
 ENV ANDROID_HOME /home/jenkins/sdk
@@ -68,6 +67,8 @@ RUN wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 	&& unzip /opt/tools.zip -d $ANDROID_HOME \
 	&& rm -f /opt/tools.zip
 
-RUN yes | sdkmanager 'build-tools;27.0.3' 'extras;google;m2repository' 'platform-tools' 'platforms;android-27' 'tools'
+RUN yes | sdkmanager 'build-tools;26.0.2' 'extras;google;m2repository' 'platform-tools' 'platforms;android-26' 'tools'
+RUN chown -R jenkins:jenkins /home/jenkins/sdk
 
+USER ${user}
 WORKDIR /home/${user}
