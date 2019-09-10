@@ -49,6 +49,7 @@ RUN npm config set unsafe-perm=true
 
 RUN chown -R jenkins:jenkins /home/jenkins/.npm
 RUN chown -R jenkins:jenkins /home/jenkins/.meteor
+RUN chown -R jenkins:jenkins /home/jenkins/.config
 ENV AGENT_WORKDIR=${AGENT_WORKDIR}
 
 ENV ANDROID_HOME /home/jenkins/sdk
