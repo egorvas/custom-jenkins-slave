@@ -45,6 +45,7 @@ RUN npm install -g mocha-allure-reporter --unsafe-perm
 RUN npm install -g mocha-multi-reporters --unsafe-perm
 RUN npm install -g mocha-junit-reporter --unsafe-perm
 RUN npm install -g truffle --unsafe-perm
+RUN npm install -g sol2uml --unsafe-perm
 RUN npm config set unsafe-perm=true
 
 RUN chown -R jenkins:jenkins /home/jenkins/.npm
