@@ -28,7 +28,7 @@
         <mr.service.tests.token.name></mr.service.tests.token.name>
         <script.selenium.url></script.selenium.url>
         <public.proxy.url></public.proxy.url>
-        <aspectj.version>1.8.10</aspectj.version>
+        <aspectj.version>1.9.4</aspectj.version>
     </properties>
     <repositories>
         <repository>
@@ -137,6 +137,11 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>24.0-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
     </dependencies>
     <build>
