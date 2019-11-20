@@ -74,5 +74,8 @@ RUN wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 RUN yes | sdkmanager 'build-tools;26.0.2' 'extras;google;m2repository' 'platform-tools' 'platforms;android-26' 'tools'
 RUN chown -R jenkins:jenkins /home/jenkins/sdk
 
+COPY ./pom.xml ./pom.xml
+RUN mvn dependency:go-offline -B
+
 USER ${user}
 WORKDIR /home/${user}
